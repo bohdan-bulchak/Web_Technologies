@@ -1,0 +1,727 @@
+<!DOCTYPE HTML>
+<html lang="EN" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="google-signin-client_id" content="885522078069-3rm20nmhaa8969jgve0sogpb4pvgglkb.apps.googleusercontent.com">
+    <title>TM Prudko | Main</title>
+    <link href="css/screenStyle.css" rel="stylesheet" media="screen">
+    <link href="css/printStyle.css" rel="stylesheet" media="print">
+</head>
+
+<body id="main">
+<aside>
+
+    <svg id="svg" viewBox="0 0 200 100" width="6vw" height="3.8vw">
+        <rect x="8" y="8" rx="15" ry="15" width="90%" height="90%"/>
+    </svg>
+
+
+    <img alt="TM Prudko" src="fig/pruu-removebg-preview.png" id="c">
+</aside>
+
+<aside id="googleSignIn">
+    <div id="SignInButton"></div>
+    <div id="SignedIn">
+        <p>You are signed in as</p> <span id="userName"></span> <button class="button1" onclick="signOut()">Sign Out</button>
+    </div>
+</aside>
+
+<div>
+
+    <picture id="a">
+
+        <source class="img1" srcset="fig/prud25.png"
+                media="(max-width: 800px)"/>
+
+        <img class="img1" alt="TM Prudko" src="fig/prud110.png"/>
+    </picture>
+
+    <h1> TM "Prudko"</h1>
+</div>
+<!--
+<form>
+    <label for="author11">Autor:</label>
+    <input type="text" name="author11" id="author11" size="20"
+           maxlength="100"/>
+</form>-->
+<!--=============MENU=================-->
+
+
+<nav class="mainbody2">
+
+    <table  id="articles_menu">
+
+        <tr>
+            <th><a href="#welcome">WELCOME</a></th>
+            <th><a href="#info">INFO</a></th>
+            <th><a href="#puffcorn">PUFFCORN</a></th>
+            <th><a href="#cereals">CEREALS</a></th>
+            <th><a href="#articles/1/4">ARTICLES</a></th>
+            <th><a href="#addArticle">ADD ARTICLE</a></th>
+            <th><a href="#opinions">OPINIONS</a></th>
+            <th><a href="#addComment">COMMENT</a></th>
+        </tr>
+    </table>
+</nav>
+
+<!--===========Ulozenie stranok v main===============-->
+<main id="router-view">
+
+</main>
+
+
+<!--=========Templates of dynamic html pages==========-->
+
+
+
+<!--=========Template of Welcome page==========-->
+
+
+<script id="template-welcome" type="text/template">
+
+    <h2>
+        Welcome on a page of TM "Prudko"
+    </h2>
+
+    <article>
+        <p class="p0_1">
+        There you can find all of information about our firm!
+        </p>
+
+    </article>
+</script>
+
+
+
+<!--=========Template of Aticles page==========-->
+
+
+
+<!--<script id="template-articles" type="text/template">
+
+    <h2>Articles</h2>
+    {{#.}}
+    <article class="articles">
+
+        <h3> {{title}} </h3>
+
+        <p class="p1_3">
+            {{{content}}}
+        </p>
+
+        <h4>
+            by {{author}}
+        </h4>
+
+    </article>
+    {{/.}}
+
+    <p class="p1_4">
+        Displaying page {{currPage}} of {{pageCount}} pages.
+    </p>
+    <nav class="navi">
+       {{#prevPage}}
+        <a class="p1_3" href="#articles/{{prevPage}}/{{pageCount}}"><< Previous page</a>
+        {{/prevPage}}
+        {{#nextPage}}
+        <a class="p1_3" href="#articles/{{nextPage}}/{{pageCount}}">Next page >></a>
+        {{/nextPage}}
+    </nav>
+</script>-->
+
+<script id="template-articles" type="text/template">
+    <h2>Articles</h2>
+    {{#articles}}
+    <article class="articles">
+        <h3><a href="{{detailLink}}">{{title}}</a></h3>
+
+
+        <h4>
+            by {{author}}
+        </h4>
+    </article>
+    {{/articles}}
+    <p class="p1_4">
+        Displaying page {{currPage}} of {{pageCount}} pages.
+    </p>
+    <nav class="navi">
+        {{#prevPage}}
+        <a class="p1_3" href="#articles/{{prevPage}}/{{pageCount}}"><< Previous page</a>
+        {{/prevPage}}
+        {{#nextPage}}
+        <a class="p1_3" href="#articles/{{nextPage}}/{{pageCount}}">Next page >></a>
+        {{/nextPage}}
+    </nav>
+
+</script>
+
+<!--=========Template of ArticlesError page==========-->
+
+
+
+<script id="template-articles-error" type="text/template">
+
+    <article>
+        <h2>Articles acquisition failed</h2>
+        <p class="p1_3">
+            {{errMessage}}
+        </p>
+    </article>
+
+</script>
+
+
+
+<!--=========Template of Info page==========-->
+
+
+
+<script id="template-info" type="text/template">
+
+    <header>
+        <h2>Info Page</h2>
+    </header>
+
+    <article>
+        <h3>
+            It is a page, where you can find some general information about us!
+        </h3>
+    </article>
+    <div class="mainbody">
+
+        <p class="p1_1">
+            First of all, our firm is associated in big cities of Ukraine:
+        </p>
+        <ul id="ul1">
+            <li class="city">▪ Ternopil</li>
+            <li class="city">▪ Lviv</li>
+            <li class="city">▪ Cherkasy</li>
+            <li class="city">▪ Charkiv</li>
+        </ul>
+
+
+        <div id="table2">
+            <p class="p1_1"> The adresses of filials are:</p>
+            <div class="ol">
+                <div class="ol1">
+                    <p>Ternopil:</p>
+                    <ol>
+                        <li>Volod str</li>
+                        <li>Jaremy str</li>
+                    </ol>
+                </div>
+                <div class="ol1">
+                    <p>Lviv:</p>
+                    <ol>
+                        <li>Biletska str</li>
+                        <li>Franka str</li>
+                    </ol>
+                </div>
+                <div class="ol11">
+                    <p>Cherkasy:</p>
+                    <ol>
+                        <li>Persha str</li>
+                        <li>Holovna str</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+        <table class="table">
+            <caption id="caption">The number of shops that deal with us:</caption>
+            <tr>
+                <th rowspan="2">Ternopil</th>
+                <th class="thnum">80</th>
+            </tr>
+            <tr>
+                <th class="thnum">125(incule region)</th>
+            </tr>
+            <tr>
+                <th>Lviv</th>
+                <th class="thnum">120</th>
+            </tr>
+            <tr>
+                <th>Cherkasy</th>
+                <th class="thnum">40</th>
+            </tr>
+            <tr>
+                <th>Charkiv</th>
+                <th class="thnum">35</th>
+            </tr>
+
+        </table>
+    </div>
+</script>
+
+
+
+<!--=========Template of Puffcorn page==========-->
+
+
+
+<script id="template-puffcorn" type="text/template">
+
+    <header>
+    <h2>Puffcorn</h2>
+    </header>
+    <p class="p2_1">
+        <b>Puffcorn</b> is one of our main products.<br>There are all of info about that.
+    </p>
+
+    <div class="puff">
+        <div class="puffcorn">
+            <p><img alt="TM Prudko" src="fig/0001.png" ></p>
+            <p><img alt="TM Prudko" src="fig/0002.png" ></p>
+        </div>
+        <div class="puffcorn">
+            <p><img alt="TM Prudko" src="fig/0003.png" ></p>
+            <p><img alt="TM Prudko" src="fig/0004.png" ></p>
+        </div>
+    </div>
+
+</script>
+
+
+
+
+<!--=========Template of Cereals page==========-->
+
+
+
+<script id="template-cereals" type="text/template">\
+
+<header>
+    <h2>Cereals</h2>
+</header>
+<p class="p2_1">
+    Another of our product are <b>Cereals</b>.
+</p>
+<div class="careals">
+    <div id="careals1">
+        <img alt="TM Prudko" src="fig/carials1.png" width="450">
+    </div>
+    <div id="careals2">
+        <img alt="TM Prudko" src="fig/carials2.png" width="450">
+    </div>
+</div>
+
+</script>
+
+
+
+
+<!--=========Template of Opinions page==========-->
+
+
+
+<script id="template-opinions" type="text/template">
+    <article  id="artComments">
+        <h2>Comments</h2>
+        {{#.}}
+        <section>
+            <i>Date: {{createdAt}}</i> <p class="p_name"> Name: {{name}} </p>
+            <p class="p_info">Type of comment:</p>
+            <p class="p_info_test">Suggestion: {{typeRadio1}}</p>
+            <p class="p_info_test">Notice: {{typeRadio2}}</p>
+            <p class="p_info_test">Question: {{typeRadio3}}</p>
+
+
+            <p class="p_info">Status: {{status}}</p>
+
+            <p class="p_info">Email: {{email}}</p>
+
+            <p class="p_info">Phone: {{phone}}</p>
+
+            <p class="p_info">Preferred contact method:</p>
+            <p class="p_info_test">Email: {{contactRadio1}}</p>
+            <p class="p_info_test">Phone: {{contactRadio2}}</p>
+            <p class="p_info_test">Viber: {{contactRadio3}}</p>
+
+            <p class="p_info">Image: {{image}}</p>
+
+            <p class="p_info">Comment is connected with:</p>
+            <p class="p_info_test">Puffcorn: {{test1}}</p>
+            <p class="p_info_test">Cereals: {{test2}}</p>
+            <p class="p_info_test">Contact info: {{test3}}</p>
+            <p class="p_info_test">Other: {{test4}}</p>
+
+            <p class="p_info_comment">Comment: {{comment}}</p>
+        </section>
+        {{/.}}
+        {{^.}}
+        <section class="p_info_comment">
+            Sorry, no opinions found.
+        </section>
+        {{/.}}
+
+    </article>
+
+</script>
+
+
+
+<!--=========Template of Commenting page==========-->
+
+
+
+<script  id="template-addComment" type="text/template">
+
+    <article class="form">
+
+        <h6 class="formp">
+            You can use this form to leave a comment for us!
+        </h6>
+
+        <p class="notice">(Form elements' borders that are in <span class="red">red</span> are required)</p>
+
+        <form id="commentForm" action="#" onsubmit="return window.comHandler.processCommentFrmData(event)">
+
+            <p class="formp2">Please select type of your comment:</p>
+            <br>
+            <div class="radio1">
+                <div class="control-group">
+                    <label class="control control-radio" >
+                        Suggestion
+                        <input type="radio" name="radio1" id="typeRadio1"/>
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+                    <label class="control control-radio">
+                        Notice
+                        <input type="radio" name="radio2" id="typeRadio2"/>
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+                    <label class="control control-radio">
+                        Question
+                        <input type="radio" name="radio3" id="typeRadio3" />
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+
+                </div>
+            </div>
+
+            <br>
+
+
+            <label for="nameElm">Your name:</label>
+
+            <input type="text" name="nameElm" id="nameElm"  size="30" maxlength="60"
+                   placeholder="Enter your name"
+                   required
+                   pattern="\S(.*\S)?"
+                   title="Required field, can not start with whitespace"/>
+            <br><br>
+
+            <label for="statusElm">Your status:</label>
+            <input list="statuses" id="statusElm" name="statuses" size="30"
+                   placeholder="Choose your status"/>
+            <datalist id="statuses">
+                <option value="Customer">
+                <option value="Seller">
+                <option value="Private entrepreneur">
+                <option value="Company representative">
+                <option value="Other">
+            </datalist>
+            <br><br>
+
+            <label for="emailElm">Your email:</label>
+
+            <input type="email" name="email" id="emailElm"  size="30" maxlength="60"
+                   placeholder="Enter your email:"
+                   required
+                   pattern="\S(.*\S)?"
+                   title="Required field, can not start with whitespace"/>
+
+
+            <br><br>
+
+            <label for="phoneElm">Your phone:</label>
+
+            <input type="text" name="phone" id="phoneElm"  size="30" maxlength="60"
+                   placeholder="Enter your phone:"
+                   pattern="^['+'][ 0-9]+$"
+                   title="Please use '+' and your number then"
+            />
+            <br><br>
+
+            <p class="formp3">Please select your preferred contact method:</p>
+            <br>
+
+            <div class="radio2">
+                <div class="control-group">
+                    <label class="control control-radio">
+                        Email
+                        <input type="radio" name="radioc1" id="contactRadio1" />
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+                    <label class="control control-radio">
+                        Phone
+                        <input type="radio" name="radioc2" id="contactRadio2"/>
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+                    <label class="control control-radio">
+                        Viber
+                        <input type="radio" name="radioc3" id="contactRadio3"/>
+                        <my-radio class="control_indicator"></my-radio>
+                    </label>
+
+                </div>
+            </div>
+            <br>
+
+            <label for="imgElm">Add image:</label>
+
+            <input type="url" name="image" id="imgElm"  size="30" maxlength="200"
+                   placeholder="Enter an url of your image:"
+                   title="Not required field"/>
+            <br><br>
+
+            <label for="commentElm">Your comment:</label>
+            <textarea name="comment" id="commentElm" cols="40" rows="2"
+                      placeholder="Leave your comment:"
+                      required
+                      title="Required field, can not start with whitespaces"
+            ></textarea>
+            <br><br>
+
+            <p class="formp3">Your comment is connected with:</p>
+
+            <p>
+                <input type="checkbox" name="test1" id="test1" />
+                <label for="test1">Puffcorn</label>
+            </p>
+            <p>
+                <input type="checkbox" name="test2" id="test2"  />
+                <label for="test2">Cereals</label>
+            </p>
+            <p>
+                <input type="checkbox" name="test3" id="test3" />
+                <label for="test3">Contact info</label>
+            </p>
+            <p>
+                <input type="checkbox" name="test4" id="test4"  />
+                <label for="test4">Other</label>
+            </p>
+
+
+            <button type="submit">Send</button>
+            <button class="reset" type="reset">Reset</button>
+
+
+        </form>
+
+
+
+    </article>
+
+</script>
+
+
+
+<!--=========Template of adding an article ==========-->
+
+
+<script id="template-addArticle" type="text/template">
+   <article class="form">
+    <h2>New Article</h2>
+    <p class="notice">(Form elements' borders that are in <span class="red">red</span> are required)</p>
+    <form id="articleForm1">
+        <label for="author1">Author:</label>
+        <input type="text" name="author1" id="author1" size="50" title="Article author, max. length 100 characters."
+               maxlength="100" placeholder="e.g. Bohdan Bulchak"   />
+        <br>
+        <label for="title1">Title:</label>
+        <input type="text" name="title1" id="title1" size="50"  maxlength="100" pattern="\S[\S\s]*"
+               placeholder="e.g. New Title." required
+               title="Article title, required field, max. length: 100 characters.
+The first character must not be a space."/>
+       <!-- <br>
+        <label for="imageLink1">Image (url):</label>
+        <input type="url" name="imageLink1" id="imageLink1" value="{{imageLink1}}" size="50"
+               title="Image URL, max. length 100 characters." maxlength="100"/>
+
+
+        <label></label>
+        <div class="marg">
+            <button type="button" id="btShowFileUpload1">
+                Upload image
+            </button>
+        </div>
+
+        <fieldset class="added hiddenElm" id="fsetFileUpload1">
+            <legend>Image Upload</legend>
+            <input type="file" id="flElm1" name="file" accept="image/jpeg, image/png"/>
+            <br />
+            <div class="marg">
+                <button type="button" id="btFileUpload1">
+                    Send image to server </button>
+                <button type="button" id="btCancelFileUpload1">
+                    Cancel uploading </button>
+            </div>
+        </fieldset>
+           -->
+        <br>
+        <label for="content1">Article content:</label>
+        <textarea name="content1" id="content1" spellcheck="true" lang="sk" cols="50" rows="20" required
+                  title="Article content, required field"></textarea>
+        <br>
+        <br>
+        <div class="buttons">
+        <button type="reset">
+            Reset
+        </button>
+        <button type="submit">
+            Add article
+        </button>
+        </div>
+    </form>
+   </article>
+
+</script>
+
+
+
+<!--=========Template of one article  ==========-->
+
+
+<script id="template-article" type="text/template">
+    <article class="articles">
+        <h3>{{title}}</h3>
+        <h4>
+            by {{author}}
+        </h4>
+        {{#imageLink}}
+        <figure>
+            <img src="{{imageLink}}" alt="article figure" />
+        </figure>
+        {{/imageLink}}
+        <div><p class="ph4">{{{content}}}</p></div>
+        <p class="ph4">
+            Keywords:
+            {{tags}}
+        </p>
+    </article>
+
+    <footer class="buttons">
+        <button> <a href="{{backLink}}" class="linkAsButton"><< Back</a></button>
+        <button> <a href="{{editLink}}" class="linkAsButton">Edit</a></button>
+        <button> <a href="{{deleteLink}}" class="linkAsButton">Delete</a></button>
+    </footer>
+
+</script>
+
+
+
+<!--=========Template of editing an article  ==========-->
+
+
+
+<script id="template-article-form" type="text/template">
+    <article class="form">
+        <h2>{{formTitle}}</h2> <br><br>
+        <p class="notice">(Form elements' borders that are in <span class="red">red</span> are required)</p>
+        <form id="articleForm">
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" value="{{author}}" size="50"
+                   title="Article author, max. length 100 characters."
+                   maxlength="100" placeholder="e.g. Bohdan Bulchak" />
+            <br>
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="{{title}}" size="50"
+                   maxlength="100" pattern="\S[\S\s]*" placeholder="e.g. New Title." required
+                   title="Article title, required field, max. length: 100 characters.
+The first character must not be a space."  />
+            <br>
+            <label for="imageLink">Image (url):</label>
+            <input type="url" name="imageLink" id="imageLink" value="{{imageLink}}" size="50"
+                   title="Image URL, max. length 100 characters." maxlength="100"/>
+
+
+            <label></label>
+            <div class="marg">
+            <button type="button" id="btShowFileUpload">
+                Upload image
+            </button>
+            </div>
+
+            <fieldset class="added hiddenElm" id="fsetFileUpload">
+                <legend>Image Upload</legend>
+                <input type="file" id="flElm" name="file" accept="image/jpeg, image/png"/>
+                <br />
+                <div class="marg">
+                <button type="button" id="btFileUpload">
+                    Send image to server </button>
+                <button type="button" id="btCancelFileUpload">
+                    Cancel uploading </button>
+                </div>
+            </fieldset>
+
+
+            <br>
+            <label for="content">Article content:</label>
+            <textarea
+                    name="content" id="content" spellcheck="true" lang="sk"
+                    cols="50" rows="20" required
+                    title="Article content, required field">
+              {{content}}
+            </textarea>
+            <br><br>
+            <label for="tags">Keywords:</label>
+            <input  type="text" name="tags" id="tags" value="{{tags}}" size="50"
+                    title="Keyword list, comma separated." placeholder="e.g. home,family" />
+            <br> <br>
+            <div class="buttons">
+                <button> <a href="{{backLink}}" class="linkAsButton"><< Back</a> </button>
+            <button type="reset"> Reset Form </button>
+            <button type="submit"> {{submitBtTitle}} </button>
+            </div>
+        </form>
+    </article>
+
+   <!-- <footer class="buttons">
+       <button> <a href="{{backLink}}" class="linkAsButton"><< Back</a> <button>
+         </footer>-->
+</script>
+
+
+
+<!--=========Contact nav==========-->
+
+
+
+<nav class="ppp2">
+    <p class="p1_4">Created by <a href="mailto:bulchak.bogdan@gmail.com">Bohdan Bulchak</a></p>
+</nav>
+
+
+
+
+
+
+
+
+<!--=========Email validation==========-->
+
+
+
+<script>
+
+    const email = document.getElementById("emailElm");
+
+    email.addEventListener("input", function (event) {
+        if (email.validity.typeMismatch) {
+            email.setCustomValidity("Please enter an email for the correct format(e.g. example@mymail.com)");
+        } else {
+            email.setCustomValidity("");
+        }
+    });
+
+</script>
+
+<!--JavaScript code, inserted as a module-->
+<script  type="module" src="js/index.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
+<script src="js/googleSignIn.js"></script>
+</body>
+</html>

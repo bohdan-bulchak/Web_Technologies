@@ -1,0 +1,41 @@
+@media print and (-webkit-min-device-pixel-ratio:0){
+    body {
+
+        background-color: white;
+        font-family: cursive;
+        min-width: 90%;
+
+    }
+    .mainbody{
+        min-width: 90%;
+        border: none !important;
+    }
+    h1{
+        border: none !important;
+        box-shadow: none !important;
+    }
+    h3{
+        min-width: 90%;
+    }
+    #table2{
+        margin-top: 70mm;
+    }
+
+    .p1_1{
+        color: black;
+
+    }
+    body > aside, body > nav{
+        display: none;
+    }
+    .p2_1{
+        border: none !important;
+        min-width: 70%;
+        margin-bottom: 50%;
+    }
+    .puffcorn img{
+        max-width: 50%;
+    }
+
+
+}
